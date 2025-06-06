@@ -46,7 +46,7 @@ def login():
     if request.method == 'POST':
         username = request.form.get('username')
         password = request.form.get('password')
-        if username == '' and password == '':
+        if username == 'nom718' and password == 'nom11234':
             session['logged_in'] = True
             flash('Login successful!', 'success')
             return redirect(url_for('upload_page'))
