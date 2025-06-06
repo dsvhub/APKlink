@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+<head>
+    <title>Upload APKs</title>
+</head>
+<body>
+    <h1>📦 APK Hosting Dashboard</h1>
+
+    <nav>
+        <a href="{{ url_for('upload_page') }}">🏠 Home</a>
+
+        <a href="{{ url_for('logout') }}">🚪 Logout</a>
+    </nav>
+
+    <hr>
+
+    <h2>📤 Upload New APK Files</h2>
+    <form method="POST" enctype="multipart/form-data">
+        <input type="file" name="apks" multiple>
+        <button type="submit">Upload</button>
+    </form>
+
+
+    <hr>
+
+    <h2>Uploaded APK Files</h2>
+
+    {% if apks %}
+<table border="1" cellpadding="5">
+    <tr>
+        <th>File Name</th>
+        <th>Downloads</th>
+        <th>Size (KB)</th>
+        <th>Uploaded At</th>
+        <th>Actions</th>
+    </tr>
+    {% for apk in apks %}
+    <tr>
+        <td>{{ apk[1] }}</td>
+        <td>{{ apk[2] }}</td>
+        <td>{{ (apk[3] / 1024) | round(1) if apk[3] else 'N/A' }}</td>
+        <td>{{ apk[4] if apk[4] else 'N/A' }}</td>
+        <td>
+            <a href="{{ url_for('download_apk', filename=apk[1]) }}">Download</a>
+            <a href="{{ url_for('edit_apk', apk_id=apk[0]) }}">Edit</a>
+            <form action="{{ url_for('delete_apk', apk_id=apk[0]) }}" method="post" style="display:inline;" onsubmit="return confirm('Are you sure?');">
+                <button type="submit">Delete</button>
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+
+    {% else %}
+        <p>No APKs uploaded yet.</p>
+    {% endif %}
+</body>
+</html>

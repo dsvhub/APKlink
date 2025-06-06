@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+<head>
+    <title>Edit APK</title>
+</head>
+<body>
+    <h1>Edit APK Info</h1>
+
+    <form method="POST">
+        <label>Filename:</label><br>
+        <input type="text" name="filename" value="{{ apk[1] }}"><br><br>
+        <button type="submit">Save Changes</button>
+    </form>
+
+    <br>
+    <a href="{{ url_for('upload_page') }}">← Back to Upload Page</a>
+</body>
+</html>
