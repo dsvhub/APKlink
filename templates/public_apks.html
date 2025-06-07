@@ -6,13 +6,24 @@
 <body>
     <h1>📥 Available APK Files</h1>
 
-<h2>📥 Public APK Downloads</h2>
-<ul>
-  <li><a href="https://github.com/dsvhub/apk-hosting-app/releases/download/V1.0.1/Total.Commander.-.file.manager_3.50d_APKPure.apk" target="_blank">📦 MyApp v1.0.1</a></li>
-  <li><a href="https://github.com/YOUR_USER/YOUR_REPO/releases/download/v1.0.1/MyApp_v2.apk" target="_blank">📦 MyApp v2.0.0</a></li>
-  <!-- Add more links as needed -->
-</ul>
-
+    <table border="1" cellpadding="5">
+        <tr>
+            <th>File Name</th>
+            <th>Downloads</th>
+            <th>File Size (KB)</th>
+            <th>Uploaded At</th>
+            <th>Action</th>
+        </tr>
+        {% for apk in apks %}
+        <tr>
+            <td>{{ apk[0] }}</td>
+            <td>{{ apk[1] }}</td>
+            <td>{{ (apk[2] / 1024) | round(1) }}</td>
+            <td>{{ apk[3] }}</td>
+            <td><a href="{{ url_for('public_download', filename=apk[0]) }}">Download</a></td>
+        </tr>
+        {% endfor %}
+    </table>
 
     <br><br>
 
