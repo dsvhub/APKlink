@@ -13,6 +13,9 @@ UPLOAD_FOLDER = os.path.join(os.path.dirname(__file__), 'uploads')
 DB_FILE = 'templates/uploads/database.db'
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
+# Application version
+APP_VERSION = "1.0.1"
+
 # Database setup
 def init_db():
     with sqlite3.connect(DB_FILE) as conn:
@@ -212,10 +215,9 @@ def public_page():
         c = conn.cursor()
         c.execute("SELECT filename, downloads, filesize, uploaded_at FROM apks")
         apks = c.fetchall()
-    return render_template('public_apks.html', apks=apks)
+    return render_template('public_apks.html', apks=apks, version=APP_VERSION)
 
 @app.route('/downloads/<filename>')
-@login_required
 def download_apk(filename):
     filepath = os.path.join(UPLOAD_FOLDER, filename)
     if not os.path.exists(filepath):

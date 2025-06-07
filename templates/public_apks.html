@@ -1,29 +1,35 @@
-<!-- templates/public_apks.html -->
-<!DOCTYPE html>
+<!doctype html>
 <html>
 <head>
-    <title>Available APKs</title>
+    <title>Public APK Downloads</title>
 </head>
 <body>
-    <h1>📱 Download APKs</h1>
+    <h1>📥 Available APK Files</h1>
+
     <table border="1" cellpadding="5">
         <tr>
-            <th>Filename</th>
-            <th>Size (KB)</th>
-            <th>Uploaded</th>
+            <th>File Name</th>
             <th>Downloads</th>
+            <th>File Size (KB)</th>
+            <th>Uploaded At</th>
             <th>Action</th>
         </tr>
         {% for apk in apks %}
         <tr>
             <td>{{ apk[0] }}</td>
+            <td>{{ apk[1] }}</td>
             <td>{{ (apk[2] / 1024) | round(1) }}</td>
             <td>{{ apk[3] }}</td>
-            <td>{{ apk[1] }}</td>
-            <td><a href="{{ url_for('download_apk', filename=apk[0]) }}">Download</a></td>
+            <td><a href="{{ url_for('public_download', filename=apk[0]) }}">Download</a></td>
         </tr>
         {% endfor %}
     </table>
+
+    <br><br>
+
+    <!-- ✅ Footer placed correctly -->
+    <footer>
+        <small>App Version: {{ version }}</small>
+    </footer>
 </body>
 </html>
-<!-- public.html placeholder -->
