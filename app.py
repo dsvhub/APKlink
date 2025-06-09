@@ -14,7 +14,7 @@ DB_FILE = 'templates/uploads/database.db'
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 # Application version
-APP_VERSION = "1.0.1"
+APP_VERSION = "1.0.2"
 
 # Database setup
 def init_db():
