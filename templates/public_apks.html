@@ -1,35 +1,111 @@
 <!doctype html>
 <html>
 <head>
-    <title>Public APK Downloads</title>
+    <title>📥 Public APK Downloads</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 40px;
+            background-color: #f4f6f8;
+            color: #333;
+        }
+        .logo {
+            height: 60px;
+        }
+        table {
+            width: 100%;
+            background-color: #fff;
+            border-collapse: collapse;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 12px 16px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        th {
+            background-color: #f0f0f0;
+        }
+        a.btn-download {
+            display: inline-block;
+            background-color: #007bff;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        a.btn-download:hover {
+            background-color: #0056b3;
+        }
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            color: #888;
+        }
+    </style>
 </head>
 <body>
-    <h1>📥 Available APK Files</h1>
 
-    <ul>
-        <li>
-            <a href="https://github.com/dsvhub/APKlink/releases/download/V1.0/SmartersPro.apk" target="_blank">
-                📦 SmartersPro APK v1.0
-            </a>
-        </li>
-        <li>
-            <a href="https://github.com/dsvhub/APKlink/releases/download/V1.0/clean-master-9-4-9.apk" target="_blank">
-                📦 Clean-Master-9-4-9
-            </a>
-        </li>
-        <li>
-            <a href="https://github.com/dsvhub/APKlink/releases/download/V1.0/AppLinked_2.0.5.apk" target="_blank">
-                📦 AppLinked V2.0.5
-            </a>
-        </li>
-        <!-- Add more links here as needed -->
-    </ul>
+    <!-- 🔹 Logo -->
+    <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" class="logo">
 
-    <br><br>
+    <!-- 🔹 Title -->
+    <h1>📦 Available APK Downloads</h1>
 
-    <!-- ✅ Footer placed correctly -->
+    <!-- 🔹 APK Table -->
+<table>
+    <tr>
+        <th>App</th>
+        <th>Version</th>
+        <th>Action</th>
+    </tr>
+
+    <tr>
+        <td>
+            <img src="{{ url_for('static', filename='icons/SmartersPro.png') }}" alt="MyApp Logo" style="height:40px; vertical-align: middle; margin-right: 10px;">
+            SmartersPro App APK
+        </td>
+        <td>v1.0.1</td>
+        <td>
+            <a class="btn-download" href="https://github.com/dsvhub/APKlink/releases/download/V1.0/SmartersPro.apk" target="_blank">
+                Download
+            </a>
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            <img src="{{ url_for('static', filename='icons/clean_master-logo.png') }}" alt="MyApp Logo" style="height:40px; vertical-align: middle; margin-right: 10px;">
+            Clean Master App APK
+        </td>
+        <td>v9.4.9</td>
+        <td>
+            <a class="btn-download" href="https://github.com/dsvhub/APKlink/releases/download/V1.0/clean-master-9-4-9.apk" target="_blank">
+                Download
+            </a>
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            <img src="{{ url_for('static', filename='icons/AppLinkedLogo2.png') }}" alt="MyApp2 Logo" style="height:40px; vertical-align: middle; margin-right: 10px;">
+            AppLinked
+        </td>
+        <td>v2.0.5</td>
+        <td>
+            <a class="btn-download" href="https://github.com/dsvhub/APKlink/releases/download/V1.0/AppLinked_2.0.5.apk" target="_blank">
+                Download
+            </a>
+        </td>
+    </tr>
+</table>
+
+
+    <!-- 🔹 Footer -->
     <footer>
         <small>App Version: {{ version }}</small>
     </footer>
+
 </body>
 </html>
