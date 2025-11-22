@@ -48,6 +48,7 @@ def upload_file():
     git_output = ""
     git_output += run_git("git add .")
     git_output += run_git(f'git commit -m "{commit_msg}"')
+    git_output += run_git("git pull origin main --rebase")
     git_output += run_git("git push origin main")
 
     log_text.insert(tk.END, git_output + "\n")
