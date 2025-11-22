@@ -197,7 +197,7 @@ def public_apk_list():
         c = conn.cursor()
         c.execute("SELECT filename, downloads, filesize, uploaded_at FROM apks")
         apks = c.fetchall()
-    return render_template('public_apks.html', apks=apks)
+    return render_template('public_apks2.html', apks=apks)
 
 @app.route('/public_download/<filename>')
 def public_download(filename):
@@ -215,7 +215,7 @@ def public_page():
         c = conn.cursor()
         c.execute("SELECT filename, downloads, filesize, uploaded_at FROM apks")
         apks = c.fetchall()
-    return render_template('public_apks.html', apks=apks, version=APP_VERSION)
+    return render_template('public_apks2.html', apks=apks, version=APP_VERSION)
 
 @app.route('/downloads/<filename>')
 def download_apk(filename):
